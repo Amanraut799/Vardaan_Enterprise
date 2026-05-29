@@ -1,4 +1,4 @@
-import "./goals.css";
+import "./Goals.css";
 
 import {
   FaEye,
