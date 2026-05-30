@@ -523,23 +523,45 @@ background: linear-gradient(135deg, #d4a017, #f5c542);
   .banner-overlay h1 {
     font-size: 42px;
   }
+  
+  /* Fixed the empty block and unified spacing */
   .operations-section,
   .presence-section,
   .features-section-block {
     padding: 60px 20px;
   }
+  
   .features-header h2,
   .operations-left h2 {
     font-size: 30px;
   }
+  
+  /* ─── FIXED THE STATS SECTION CRUNCH ─── */
+  .operations-stats {
+    /* Switch from 2 columns to 1 single column on mobile */
+    grid-template-columns: 1fr; 
+    gap: 16px;
+  }
+
+  .stat-box {
+    /* Change from side-by-side flex to top-to-bottom stack */
+    flex-direction: column;
+    text-align: center;
+    padding: 20px;
+  }
+  /* ────────────────────────────────────── */
+
   .features-grid {
     grid-template-columns: 1fr;
   }
+  
+  /* Prevent the table data from spilling over the viewport edges */
   .custom-presence-table th, 
   .custom-presence-table td {
-    padding: 12px 14px;
-    font-size: 13.5px;
+    padding: 12px 10px;
+    font-size: 13px;
   }
+  
   .modal-close-btn {
     top: 10px;
     right: 10px;
