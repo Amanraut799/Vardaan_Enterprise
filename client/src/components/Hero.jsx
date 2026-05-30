@@ -137,10 +137,11 @@ function Hero() {
           </p>
 
           <div className="hero-buttons">
-
-            <button className="primary-btn">
-              Explore Services
-            </button>
+              <Link to="/services">
+                <button className="primary-btn">
+                  Explore Services
+                </button>
+              </Link>
 
             <Link to="/contact">
 

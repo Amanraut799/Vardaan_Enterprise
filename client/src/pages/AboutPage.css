@@ -8,6 +8,21 @@
   overflow: hidden;
 }
 
+.hero-line {
+  width: 180px;
+  height: 3px;
+
+  margin: 0 auto 28px;
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      #d4a017,
+      transparent
+    );
+}
+
 /* =========================
    ABOUT BANNER
 ========================= */

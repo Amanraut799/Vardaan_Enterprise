@@ -1,4 +1,5 @@
 import "./About.css";
+import { Link } from "react-router-dom";
 
 function About() {
   return (
@@ -29,6 +30,9 @@ function About() {
           <span className="about-tag">
             ABOUT US
           </span>
+
+           <div className="hero-line"></div>
+
 
           <h2>
             Smart Solutions For
@@ -61,10 +65,12 @@ function About() {
           
 
           {/* BUTTON */}
-
-          <button>
+          <Link to="/about" >
+            <button>
             Learn More
-          </button>
+           </button>
+          </Link>
+          
 
         </div>
 

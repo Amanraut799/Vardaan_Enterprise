@@ -50,7 +50,7 @@ function ProductsPage() {
       <section className="products-banner">
         <div className="banner-overlay">
           <h1>Our <span>Products</span></h1>
-          <div className="banner-line"></div>
+          <div className="hero-line"></div>
           <p>
             Smart enterprise solutions designed for modern business growth.
           </p>

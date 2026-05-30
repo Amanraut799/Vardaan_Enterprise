@@ -47,7 +47,7 @@ function ContactPage() {
       <section className="contact-banner">
         <div className="banner-overlay">
           <h1>Contact <span>Us</span></h1>
-          <div className="banner-line"></div>
+          <div className="hero-line"></div>
           <p>We are here to help you anytime.</p>
         </div>
       </section>

@@ -25,7 +25,7 @@ function AboutPage() {
             About <span>Us</span>
           </h1>
 
-          <div className="banner-line"></div>
+          <div className="hero-line"></div>
 
           <p>
             Smart Solutions. Stronger Tomorrow.
