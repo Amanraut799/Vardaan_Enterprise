@@ -1,19 +1,30 @@
 import "./ClientsMarquee.css";
-import auLogo from "/client_photo/AU-Logo.svg";
-import idfcLogo from "/client_photo/IDFC-logo-website.svg";
-import ecofyLogo from "/client_photo/logo-ecofy-sticky.png";
-import tvsLogo from "/client_photo/tvs_credit_logo.svg";
-import cholaLogo from "/client_photo/chola_logo.svg";
 
 function ClientsMarquee() {
 
- const clients = [
-  { image: auLogo },
-  { image: idfcLogo },
-  { image: ecofyLogo },
-  { image: tvsLogo },
-  { image: cholaLogo }
-];
+  const clients = [
+
+    {
+      image: "src/assets/client_photo/AU-Logo.svg",
+    },
+
+    {
+      image: "src/assets/client_photo/IDFC-logo-website.svg",
+    },
+
+    {
+      image: "src/assets/client_photo/logo-ecofy-sticky.png",
+    },
+
+    {
+      image: "src/assets/client_photo/tvs_credit_logo.svg",
+    },
+
+    {
+      image: "src/assets/client_photo/chola_logo.svg",
+    }
+
+  ];
 
   return (
 

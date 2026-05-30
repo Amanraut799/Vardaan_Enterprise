@@ -1,0 +1,304 @@
+/* =========================
+   FOOTER
+========================= */
+
+.footer {
+  position: relative;
+
+  background:
+    linear-gradient(
+      135deg,
+      #071c3c,
+      #0f172a,
+      #111827
+    );
+
+  color: white;
+
+  overflow: hidden;
+
+  padding-top: 90px;
+}
+
+/* GOLD GLOW */
+
+.footer-glow {
+  position: absolute;
+
+  width: 500px;
+  height: 500px;
+
+  top: -220px;
+  right: -180px;
+
+  background:
+    radial-gradient(
+      rgba(212,160,23,0.14),
+      transparent
+    );
+
+  filter: blur(45px);
+}
+
+/* =========================
+   CONTAINER
+========================= */
+
+.footer-container {
+  max-width: 1300px;
+
+  margin: auto;
+
+  padding: 0 70px 70px;
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(auto-fit, minmax(250px, 1fr));
+
+  gap: 60px;
+
+  position: relative;
+
+  z-index: 2;
+}
+
+/* =========================
+   BRAND
+========================= */
+
+.footer-brand {
+  max-width: 340px;
+}
+
+.footer-logo {
+  width: 180px;
+
+  margin-bottom: 25px;
+
+  object-fit: contain;
+}
+
+.footer-brand p {
+  color: #cbd5e1;
+
+  line-height: 1.9;
+
+  font-size: 16px;
+
+  margin-bottom: 30px;
+}
+
+/* =========================
+   SOCIAL ICONS
+========================= */
+
+.footer-socials {
+  display: flex;
+
+  gap: 16px;
+}
+
+.footer-socials a {
+  width: 45px;
+  height: 45px;
+
+  border-radius: 50%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background:
+    rgba(255,255,255,0.06);
+
+  border:
+    1px solid rgba(212,160,23,0.18);
+
+  color: #d4a017;
+
+  font-size: 18px;
+
+  transition: 0.35s ease;
+}
+
+.footer-socials a:hover {
+  transform: translateY(-5px);
+
+  background:
+    linear-gradient(
+      135deg,
+      #d4a017,
+      #f5c542
+    );
+
+  color: white;
+
+  box-shadow:
+    0 10px 25px rgba(212,160,23,0.25);
+}
+
+/* =========================
+   TITLES
+========================= */
+
+.footer-links h3,
+.footer-contact h3 {
+  font-size: 24px;
+
+  margin-bottom: 28px;
+
+  color: white;
+
+  position: relative;
+}
+
+/* GOLD UNDERLINE */
+
+.footer-links h3::after,
+.footer-contact h3::after {
+  content: "";
+
+  position: absolute;
+
+  left: 0;
+  bottom: -10px;
+
+  width: 60px;
+  height: 2px;
+
+  background:
+    linear-gradient(
+      90deg,
+      #d4a017,
+      transparent
+    );
+}
+
+/* =========================
+   LINKS
+========================= */
+
+.footer-links {
+  display: flex;
+
+  flex-direction: column;
+}
+
+.footer-links a {
+  color: #cbd5e1;
+
+  text-decoration: none;
+
+  margin-bottom: 16px;
+
+  transition: 0.3s ease;
+
+  width: fit-content;
+}
+
+.footer-links a:hover {
+  color: #d4a017;
+
+  transform: translateX(6px);
+}
+
+/* =========================
+   CONTACT
+========================= */
+
+.footer-contact p {
+  color: #cbd5e1;
+
+  line-height: 1.9;
+
+  margin-bottom: 18px;
+
+  transition: 0.3s ease;
+}
+
+.footer-contact p:hover {
+  color: white;
+}
+
+/* =========================
+   BOTTOM
+========================= */
+
+.footer-bottom {
+  border-top:
+    1px solid rgba(255,255,255,0.08);
+
+  text-align: center;
+
+  padding: 28px 20px;
+
+  position: relative;
+
+  z-index: 2;
+}
+
+.footer-bottom p {
+  color: #94a3b8;
+
+  font-size: 15px;
+
+  letter-spacing: 0.5px;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media screen and (max-width: 992px) {
+
+  .footer-container {
+    padding: 0 25px 60px;
+
+    gap: 50px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+
+  .footer {
+    padding-top: 70px;
+  }
+
+  .footer-container {
+    grid-template-columns: 1fr;
+
+    gap: 45px;
+  }
+
+  .footer-brand {
+    max-width: 100%;
+  }
+
+  .footer-logo {
+    width: 160px;
+  }
+
+  .footer-links h3,
+  .footer-contact h3 {
+    font-size: 22px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+
+  .footer-logo {
+    width: 140px;
+  }
+
+  .footer-brand p,
+  .footer-contact p,
+  .footer-links a {
+    font-size: 15px;
+  }
+
+  .footer-socials a {
+    width: 42px;
+    height: 42px;
+  }
+}
