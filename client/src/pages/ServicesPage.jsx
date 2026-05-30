@@ -1,4 +1,6 @@
 import "./ServicesPage.css";
+import { useState } from "react";
+import ourPresence from "/our_presence.png";
 import {
   FaChartLine,
   FaShieldAlt,
@@ -8,6 +10,9 @@ import {
 } from "react-icons/fa";
 
 function ServicesPage() {
+
+  const [showMapModal, setShowMapModal] = useState(false);
+
   const features = [
     {
       icon: <FaMapMarkedAlt />,
@@ -85,12 +90,15 @@ function ServicesPage() {
           {/* RIGHT SIDE */}
           <div className="operations-right">
             <img
-              src="our_presence.png"
+              src={ourPresence}
               alt="Operational Presence"
-              onError={(e) => {
-                e.target.src = "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40";
-              }}
+              className="presence-image"
+              onClick={() => setShowMapModal(true)}
             />
+
+            <div className="image-hint">
+              Click to Expand
+            </div>
           </div>
         </div>
       </section>
@@ -113,6 +121,31 @@ function ServicesPage() {
           ))}
         </div>
       </section>
+
+              {showMapModal && (
+          <div
+            className="map-modal-overlay"
+            onClick={() => setShowMapModal(false)}
+          >
+            <div
+              className="map-modal-content"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <button
+                className="modal-close-btn"
+                onClick={() => setShowMapModal(false)}
+              >
+                ✕
+              </button>
+
+              <img
+                src={ourPresence}
+                alt="Operational Presence"
+                className="map-modal-image"
+              />
+            </div>
+          </div>
+        )}
     </div>
   );
 }
