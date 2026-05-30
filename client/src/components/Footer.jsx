@@ -87,15 +87,15 @@ function Footer() {
           <h3>Contact Us</h3>
 
           <p>
-            info@vardaanenterprise.com
+            Vardaan.ho01@gmail.com
           </p>
 
           <p>
-            +91 98765 43210
+            +91 8889710105
           </p>
 
           <p>
-            Bhopal, Madhya Pradesh, India
+            Indore, Madhya Pradesh, India
           </p>
 
         </div>
