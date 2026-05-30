@@ -265,7 +265,8 @@
 @media screen and (max-width: 1024px) {
   .contact-section {
     grid-template-columns: 1fr;
-    padding: 60px 20px;
+    padding: 60px 20px !important;
+    justify-items: center;
   }
   .features-section {
     grid-template-columns: repeat(2, 1fr);
@@ -274,13 +275,37 @@
 }
 
 @media screen and (max-width: 640px) {
-  .features-section {
-    grid-template-columns: 1fr;
+  .contact-section {
+    align-items: center;
+    justify-items: center;
+    justify-content: center;
+    padding: auto ;
   }
+
+  .contact-info-card,
+  .contact-form-card {
+    padding: 20px;
+  }
+
+  .office-content {
+    padding: 18px;
+  }
+
+  .office-detail {
+    align-items: flex-start;
+    font-size: 14px;
+  }
+
+  .office-detail svg {
+    margin-top: 3px;
+  }
+
   .banner-overlay h1 {
-    font-size: 44px;
+    font-size: 38px;
   }
-  .contact-info-card, .contact-form-card {
-    padding: 25px;
+
+  .contact-info-card h2,
+  .contact-form-card h2 {
+    font-size: 28px;
   }
 }

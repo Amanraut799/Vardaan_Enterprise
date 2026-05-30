@@ -32,7 +32,7 @@ function ContactPage() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post("${import.meta.env.VITE_API_URL}/api/contact", formData);
+      const response = await axios.post(`${import.meta.env.VITE_API_URL}/api/contact`, formData);
       alert("Thank you for contacting us! We will get back to you soon.");
       setFormData({ name: "", email: "", subject: "", message: "" });
     } catch (error) {
