@@ -21,7 +21,7 @@ function FounderSpotlight() {
           <div className="founder-image-wrapper">
 
             <img   
-              src="src\assets\ceo_madem.png"
+              src="\ceo_madem.png"
               alt="Founder"
               className="founder-image"
             />
