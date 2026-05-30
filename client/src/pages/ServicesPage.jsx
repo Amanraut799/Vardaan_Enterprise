@@ -85,7 +85,7 @@ function ServicesPage() {
           {/* RIGHT SIDE */}
           <div className="operations-right">
             <img
-              src="/src/assets/our_presence.png"
+              src="our_presence.png"
               alt="Operational Presence"
               onError={(e) => {
                 e.target.src = "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40";
