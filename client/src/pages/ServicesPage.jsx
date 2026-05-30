@@ -47,7 +47,7 @@ function ServicesPage() {
       <section className="services-banner">
         <div className="banner-overlay">
           <span className="banner-tag">VARDAAN ENTERPRISES</span>
-          <h1>Core <span>Services</span></h1>
+          <h1>Our <span>Services</span></h1>
           <div className="banner-line"></div>
           <p>
             Smart enterprise solutions designed for modern business growth.
