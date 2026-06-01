@@ -4,6 +4,7 @@ import idfcLogo from "/client_photo/IDFC-logo-website.svg";
 import ecofyLogo from "/client_photo/logo-ecofy-sticky.png";
 import tvsLogo from "/client_photo/tvs_credit_logo.svg";
 import cholaLogo from "/client_photo/chola_logo.svg";
+import Bajaj_Finance from "/client_photo/Bajaj_Finance_Logo_2025.svg";
 
 function ClientsMarquee() {
 
@@ -12,6 +13,7 @@ function ClientsMarquee() {
   { image: idfcLogo },
   { image: ecofyLogo },
   { image: tvsLogo },
+  { image: Bajaj_Finance },
   { image: cholaLogo }
 ];
 
