@@ -14,6 +14,23 @@ const transporter = nodemailer.createTransport({
     pass: process.env.EMAIL_PASS,
   },
 });
+router.get("/test", async (req, res) => {
+  try {
+    const dns = require("dns").promises;
+
+    const result = await dns.lookup("smtp.gmail.com");
+
+    res.json({
+      success: true,
+      result,
+    });
+  } catch (err) {
+    res.json({
+      success: false,
+      error: err.message,
+    });
+  }
+});
 
 router.post("/", async (req, res) => {
   console.log("Request received");
