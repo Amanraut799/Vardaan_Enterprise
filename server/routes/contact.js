@@ -2,194 +2,183 @@ const express = require("express");
 const router = express.Router();
 const nodemailer = require("nodemailer");
 
-router.post("/", async (req, res) => {
+const transporter = nodemailer.createTransport({
+  host: "smtp.gmail.com",
+  port: 465,
+  secure: true,
+  family: 4,
+  logger: true,
+  debug: true,
+  auth: {
+    user: process.env.EMAIL_USER,
+    pass: process.env.EMAIL_PASS,
+  },
+});
 
+router.post("/", async (req, res) => {
   console.log("Request received");
   console.log(req.body);
 
   const { name, email, subject, message } = req.body;
 
   try {
-
     console.log("EMAIL_USER:", process.env.EMAIL_USER);
     console.log("EMAIL_PASS exists:", !!process.env.EMAIL_PASS);
 
-    const transporter = nodemailer.createTransport({
-        host: "smtp.gmail.com",
-        port: 587,
-        secure: false,
-        auth: {
-          user: process.env.EMAIL_USER,
-          pass: process.env.EMAIL_PASS,
-        },
-      });
+    // =========================
+    // ADMIN EMAIL TEMPLATE
+    // =========================
 
-    await transporter.verify();
+    const adminTemplate =  `
+        <!DOCTYPE html>
+        <html>
+        <head>
+        <meta charset="UTF-8">
+        <style>
+          body{
+            margin:0;
+            padding:0;
+            background:#f4f6f9;
+            font-family:Arial,sans-serif;
+          }
 
-    console.log("SMTP Connected");
+          .container{
+            max-width:650px;
+            margin:30px auto;
+            background:#ffffff;
+            border-radius:12px;
+            overflow:hidden;
+            box-shadow:0 5px 20px rgba(0,0,0,0.08);
+          }
 
-    await transporter.sendMail({
-      from: process.env.EMAIL_USER,
-      to: process.env.EMAIL_USER,
-      replyTo: email,
-      subject,
-      html: `
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<style>
-  body{
-    margin:0;
-    padding:0;
-    background:#f4f6f9;
-    font-family:Arial,sans-serif;
-  }
+          .header{
+            background:#071c3c;
+            padding:30px;
+            text-align:center;
+          }
 
-  .container{
-    max-width:650px;
-    margin:30px auto;
-    background:#ffffff;
-    border-radius:12px;
-    overflow:hidden;
-    box-shadow:0 5px 20px rgba(0,0,0,0.08);
-  }
+          .header h1{
+            color:#d4a017;
+            margin:0;
+            font-size:28px;
+          }
 
-  .header{
-    background:#071c3c;
-    padding:30px;
-    text-align:center;
-  }
+          .header p{
+            color:#ffffff;
+            margin-top:8px;
+            font-size:14px;
+          }
 
-  .header h1{
-    color:#d4a017;
-    margin:0;
-    font-size:28px;
-  }
+          .content{
+            padding:35px;
+          }
 
-  .header p{
-    color:#ffffff;
-    margin-top:8px;
-    font-size:14px;
-  }
+          .title{
+            font-size:22px;
+            color:#071c3c;
+            margin-bottom:25px;
+            border-left:4px solid #d4a017;
+            padding-left:12px;
+          }
 
-  .content{
-    padding:35px;
-  }
+          .field{
+            margin-bottom:18px;
+          }
 
-  .title{
-    font-size:22px;
-    color:#071c3c;
-    margin-bottom:25px;
-    border-left:4px solid #d4a017;
-    padding-left:12px;
-  }
+          .label{
+            font-weight:bold;
+            color:#071c3c;
+            display:block;
+            margin-bottom:5px;
+          }
 
-  .field{
-    margin-bottom:18px;
-  }
+          .value{
+            color:#555;
+            line-height:1.7;
+            background:#f8fafc;
+            padding:12px;
+            border-radius:8px;
+          }
 
-  .label{
-    font-weight:bold;
-    color:#071c3c;
-    display:block;
-    margin-bottom:5px;
-  }
+          .message-box{
+            background:#f8fafc;
+            padding:18px;
+            border-radius:8px;
+            line-height:1.8;
+            color:#444;
+          }
 
-  .value{
-    color:#555;
-    line-height:1.7;
-    background:#f8fafc;
-    padding:12px;
-    border-radius:8px;
-  }
+          .footer{
+            background:#071c3c;
+            padding:20px;
+            text-align:center;
+            color:#ffffff;
+            font-size:13px;
+          }
 
-  .message-box{
-    background:#f8fafc;
-    padding:18px;
-    border-radius:8px;
-    line-height:1.8;
-    color:#444;
-  }
+          .footer span{
+            color:#d4a017;
+            font-weight:bold;
+          }
+        </style>
+        </head>
 
-  .footer{
-    background:#071c3c;
-    padding:20px;
-    text-align:center;
-    color:#ffffff;
-    font-size:13px;
-  }
+        <body>
 
-  .footer span{
-    color:#d4a017;
-    font-weight:bold;
-  }
-</style>
-</head>
+        <div class="container">
 
-<body>
+          <div class="header">
+            <h1>Vardaan Enterprises</h1>
+            <p>New Contact Form Submission</p>
+          </div>
 
-<div class="container">
+          <div class="content">
 
-  <div class="header">
-    <h1>Vardaan Enterprises</h1>
-    <p>New Contact Form Submission</p>
-  </div>
+            <div class="title">
+              Contact Request Details
+            </div>
 
-  <div class="content">
+            <div class="field">
+              <span class="label">Name</span>
+              <div class="value">${name}</div>
+            </div>
 
-    <div class="title">
-      Contact Request Details
-    </div>
+            <div class="field">
+              <span class="label">Email</span>
+              <div class="value">${email}</div>
+            </div>
 
-    <div class="field">
-      <span class="label">Name</span>
-      <div class="value">${name}</div>
-    </div>
+            <div class="field">
+              <span class="label">Subject</span>
+              <div class="value">${subject}</div>
+            </div>
 
-    <div class="field">
-      <span class="label">Email</span>
-      <div class="value">${email}</div>
-    </div>
+            <div class="field">
+              <span class="label">Message</span>
+              <div class="message-box">
+                ${message}
+              </div>
+            </div>
 
-    <div class="field">
-      <span class="label">Subject</span>
-      <div class="value">${subject}</div>
-    </div>
+          </div>
 
-    <div class="field">
-      <span class="label">Message</span>
-      <div class="message-box">
-        ${message}
-      </div>
-    </div>
+          <div class="footer">
+            © ${new Date().getFullYear()} <span>Vardaan Enterprises</span><br>
+            This message was submitted through your website contact form.
+          </div>
 
-  </div>
+        </div>
 
-  <div class="footer">
-    © ${new Date().getFullYear()} <span>Vardaan Enterprises</span><br>
-    This message was submitted through your website contact form.
-  </div>
+        </body>
+        </html>
+        `;
 
-</div>
+    // =========================
+    // CUSTOMER EMAIL TEMPLATE
+    // =========================
 
-</body>
-</html>
-`,
-    });
-
-    console.log("Mail Sent");
-
-    res.status(200).json({
-      success: true,
-      message: "Message Sent Successfully",
-    });
-
-    await transporter.sendMail({
-        from: process.env.EMAIL_USER,
-        to: email,
-        subject: "Thank You For Contacting Vardaan Enterprises",
-      html: ` <!DOCTYPE html> 
+    const customerTemplate = ` 
+     <!DOCTYPE html> 
       <html>
        <head>
         <meta charset="UTF-8" />
@@ -299,22 +288,43 @@ router.post("/", async (req, res) => {
             <div class="footer"> © ${new Date().getFullYear()} Vardaan Enterprises<br><br> Email: vardaanenterprises06@gmail.com </div> 
             </div> 
         </body> 
-      </html> `,
-      });
+      </html> `;
 
+    // Mail to company
+
+    await transporter.sendMail({
+      from: process.env.EMAIL_USER,
+      to: process.env.EMAIL_USER,
+      replyTo: email,
+      subject,
+      html: adminTemplate,
+    });
+
+    console.log("Admin mail sent");
+
+    // Auto-reply to customer
+
+    await transporter.sendMail({
+      from: process.env.EMAIL_USER,
+      to: email,
+      subject: "Thank You For Contacting Vardaan Enterprises",
+      html: customerTemplate,
+    });
+
+    console.log("Customer mail sent");
+
+    return res.status(200).json({
+      success: true,
+      message: "Message Sent Successfully",
+    });
   } catch (error) {
-
     console.error("FULL ERROR:", error);
 
-    res.status(500).json({
+    return res.status(500).json({
       success: false,
       message: error.message,
     });
-
   }
-
 });
 
 module.exports = router;
-
-
