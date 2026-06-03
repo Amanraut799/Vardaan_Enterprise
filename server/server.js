@@ -10,12 +10,7 @@ app.use(cors());
 app.use(express.json());
 
 app.use("/api/contact", contactRoute);
-app.get("/test", (req, res) => {
-  res.json({
-    success: true,
-    message: "Test route working",
-  });
-});
+
 
 app.get("/", (req, res) => {
   res.send("Server Running");

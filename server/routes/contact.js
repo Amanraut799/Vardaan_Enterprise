@@ -4,11 +4,22 @@ const { Resend } = require("resend");
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
-router.get("/test", (req, res) => {
-  res.json({
-    success: true,
-    message: "Backend working",
-  });
+
+router.get("/smtp-test", async (req, res) => {
+  try {
+    await transporter.verify();
+
+    res.json({
+      success: true,
+      message: "SMTP connected",
+    });
+  } catch (err) {
+    res.json({
+      success: false,
+      error: err.message,
+      code: err.code,
+    });
+  }
 });
 
 router.post("/", async (req, res) => {
@@ -279,7 +290,8 @@ router.post("/", async (req, res) => {
       subject,
       html: adminTemplate,
     });
-
+    
+    console.log("asd");
     console.log("Admin email:", adminResult);
 
     const customerResult = await resend.emails.send({
