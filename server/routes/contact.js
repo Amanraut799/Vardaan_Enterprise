@@ -5,22 +5,25 @@ const { Resend } = require("resend");
 const resend = new Resend(process.env.RESEND_API_KEY);
 
 
-router.get("/smtp-test", async (req, res) => {
+router.get("/gmail-test", async (req, res) => {
   try {
     await transporter.verify();
 
     res.json({
       success: true,
-      message: "SMTP connected",
+      message: "SMTP Connected",
     });
-  } catch (err) {
+  } catch (error) {
+    console.error(error);
+
     res.json({
       success: false,
-      error: err.message,
-      code: err.code,
+      code: error.code,
+      message: error.message,
     });
   }
 });
+
 
 router.post("/", async (req, res) => {
   const { name, email, subject, message } = req.body;
