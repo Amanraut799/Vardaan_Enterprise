@@ -333,7 +333,8 @@
  .brochure-section {
   margin-top: 30px;
   padding: 25px;
-  background: #ffffff;
+  background:#fffbf2;
+  border: 1px solid rgba(212, 160, 23, 0.15);
   border-radius: 16px;
   box-shadow: 0 8px 25px rgba(0,0,0,0.08);
 }
