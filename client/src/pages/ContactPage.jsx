@@ -129,8 +129,8 @@ function ContactPage() {
         </div>
 
         {/* RIGHT SIDE: Message Form */}
-        
-        <div className="brochure-section">
+
+        {/* <div className="brochure-section">
           <h3>Company Profile</h3>
           <p>
             Learn more about Vardaan Enterprises, our services,
@@ -157,7 +157,7 @@ function ContactPage() {
               </button>
             </a>
           </div>
-        </div>
+        </div> */}
 
         <div className="contact-form-card">
           <h2>Send Message</h2>
