@@ -171,7 +171,7 @@ function ContactPage() {
           
 
               <div className="brochure-section">
-                <h3>Company Profile</h3>
+                <h2>Company Profile</h2>
                 <p>
                   Learn more about Vardaan Enterprises, our services,
                   expertise, and business presence.
