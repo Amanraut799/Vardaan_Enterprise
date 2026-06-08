@@ -9,7 +9,7 @@ import AboutPage from "./pages/AboutPage";
 import ServicesPage from "./pages/ServicesPage";
 import ProductsPage from "./pages/ProductsPage";
 import ContactPage from "./pages/ContactPage";
-// import CompanyProfile from "./pages/CompanyProfile";
+import CompanyProfile from "./pages/CompanyProfile";
 
 function App() {
   return (
@@ -30,7 +30,7 @@ function App() {
 
         <Route path="/contact" element={<ContactPage />} />
 
-        {/* <Route path="/company-profile" element={<CompanyProfile />} /> */}
+        <Route path="/company-profile" element={<CompanyProfile />} />
       </Routes>
 
       <Footer />
