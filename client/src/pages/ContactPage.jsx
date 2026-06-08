@@ -129,6 +129,36 @@ function ContactPage() {
         </div>
 
         {/* RIGHT SIDE: Message Form */}
+        
+        <div className="brochure-section">
+          <h3>Company Profile</h3>
+          <p>
+            Learn more about Vardaan Enterprises, our services,
+            expertise, and business presence.
+          </p>
+
+          <div className="brochure-buttons">
+            <a
+              href="/Vardaan-Company-Profile.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <button className="view-brochure-btn">
+                View Brochure
+              </button>
+            </a>
+
+            <a
+              href="/Vardaan-Company-Profile.pdf"
+              download
+            >
+              <button className="download-brochure-btn">
+                Download Brochure
+              </button>
+            </a>
+          </div>
+        </div>
+
         <div className="contact-form-card">
           <h2>Send Message</h2>
           <p>Fill the form and our team will contact you shortly.</p>

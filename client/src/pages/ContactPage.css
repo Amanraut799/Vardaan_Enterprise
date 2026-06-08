@@ -324,3 +324,63 @@
     font-size: 28px;
   }
 }
+
+/*  ================== 
+      brochure 
+    ================== */
+
+
+.brochure-section {
+  margin-top: 30px;
+  padding: 25px;
+  background: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+}
+
+.brochure-section h3 {
+  margin-bottom: 10px;
+  color: #0f172a;
+}
+
+.brochure-section p {
+  color: #64748b;
+  margin-bottom: 20px;
+  line-height: 1.6;
+}
+
+.brochure-buttons {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.view-brochure-btn,
+.download-brochure-btn {
+  padding: 12px 24px;
+  border-radius: 50px;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  transition: 0.3s;
+}
+
+.view-brochure-btn {
+  background: #0f172a;
+  color: #fff;
+}
+
+.view-brochure-btn:hover {
+  transform: translateY(-2px);
+}
+
+.download-brochure-btn {
+  background: #f8fafc;
+  color: #0f172a;
+  border: 2px solid #0f172a;
+}
+
+.download-brochure-btn:hover {
+  background: #0f172a;
+  color: #fff;
+}

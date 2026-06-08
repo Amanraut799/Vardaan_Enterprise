@@ -144,39 +144,6 @@
   transition: 0.35s ease;
 }
 
-/* brochure */
-
-.brochure-btn,
-.brochure-download-btn {
-  padding: 14px 28px;
-  border-radius: 50px;
-  border: none;
-  cursor: pointer;
-  font-size: 1rem;
-  font-weight: 600;
-  transition: 0.3s ease;
-}
-
-.brochure-btn {
-  background: #ffffff;
-  color: #0f172a;
-}
-
-.brochure-btn:hover {
-  transform: translateY(-3px);
-}
-
-.brochure-download-btn {
-  background: transparent;
-  color: #fff;
-  border: 2px solid #fff;
-}
-
-.brochure-download-btn:hover {
-  background: #fff;
-  color: #0f172a;
-}
-
 /* PRIMARY */
 
 .primary-btn {
