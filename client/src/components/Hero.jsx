@@ -137,20 +137,36 @@ function Hero() {
           </p>
 
           <div className="hero-buttons">
-              <Link to="/services">
-                <button className="primary-btn">
-                  Explore Services
-                </button>
-              </Link>
+            <Link to="/services">
+              <button className="primary-btn">
+                Explore Services
+              </button>
+            </Link>
 
             <Link to="/contact">
-
               <button className="secondary-btn">
                 Contact Us
               </button>
-
             </Link>
 
+            <a
+              href="/Vardaan-Company-Profile.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <button className="brochure-btn">
+                View Brochure
+              </button>
+            </a>
+
+            <a
+              href="/Vardaan-Company-Profile.pdf"
+              download
+            >
+              <button className="brochure-download-btn">
+                Download Brochure
+              </button>
+            </a>
           </div>
 
           {/* DOTS */}
