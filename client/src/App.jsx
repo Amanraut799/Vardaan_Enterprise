@@ -29,6 +29,7 @@ function App() {
 
         <Route path="/contact" element={<ContactPage />} />
 
+        <Route path="/company-profile" element={<CompanyProfile />} />
       </Routes>
 
       <Footer />
