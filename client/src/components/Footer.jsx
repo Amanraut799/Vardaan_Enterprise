@@ -34,7 +34,7 @@ function Footer() {
             solutions for long-term financial growth.
           </p> */}
 
-          <div className="footer-socials">
+          {/* <div className="footer-socials">
 
             <a href="/">
               <FaLinkedinIn />
@@ -48,7 +48,7 @@ function Footer() {
               <FaFacebookF />
             </a>
 
-          </div>
+          </div> */}
 
         </div>
 
@@ -77,6 +77,7 @@ function Footer() {
           <a href="/">Customer Support</a>
           <a href="/">Recovery Solutions</a>
           <a href="/">Enterprise Services</a>
+          <a href="https://vardaantechhub.com">Vardaan Tech Hub </a>
 
         </div>
 
