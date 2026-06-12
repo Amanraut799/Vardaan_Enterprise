@@ -77,7 +77,7 @@ function Footer() {
           <a href="/">Customer Support</a>
           <a href="/">Recovery Solutions</a>
           <a href="/">Enterprise Services</a>
-          <a href="https://vardaantechhub.com">Vardaan Tech Hub </a>
+          {/* <a href="https://vardaantechhub.com">Vardaan Tech Hub </a> */}
 
         </div>
 
