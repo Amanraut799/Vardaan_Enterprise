@@ -268,7 +268,7 @@ router.post("/", async (req, res) => {
 
     const adminResult = await resend.emails.send({
       from: "onboarding@resend.dev",
-      to: "theswift321@gmail.com",
+      to: "vardaanenterprises06@gmail.com",
       replyTo: email,
       subject,
       html: adminTemplate,
@@ -278,7 +278,7 @@ router.post("/", async (req, res) => {
     console.log("Admin email:", adminResult);
 
     const customerResult = await resend.emails.send({
-      from: "theswift321@gmail.com",
+      from: "vardaanenterprises06@gmail.com",
       to: email,
       subject: "Thank You For Contacting Vardaan Enterprises",
       html: customerTemplate,
