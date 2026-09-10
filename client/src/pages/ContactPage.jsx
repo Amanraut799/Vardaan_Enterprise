@@ -179,7 +179,7 @@ function ContactPage() {
 
                 <div className="brochure-buttons">
                   <a
-                    href="/SMART Recovery1.pdf"
+                    href="/SMART Recovery.pdf"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
@@ -189,7 +189,7 @@ function ContactPage() {
                   </a>
 
                   <a
-                    href="/SMART Recovery1.pdf"
+                    href="/SMART Recovery.pdf"
                     download
                   >
                     <button className="download-brochure-btn">
