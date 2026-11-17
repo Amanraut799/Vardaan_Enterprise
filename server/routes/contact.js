@@ -1,14 +1,50 @@
 const express = require("express");
 const router = express.Router();
-const { Resend } = require("resend");
+const nodemailer = require("nodemailer");
 
-const resend = new Resend(process.env.RESEND_API_KEY);
+function escapeHtml(value) {
+  return String(value ?? "").replace(/[&<>"']/g, (character) => ({
+    "&": "&amp;",
+    "<": "&lt;",
+    ">": "&gt;",
+    '"': "&quot;",
+    "'": "&#39;",
+  })[character]);
+}
+
+function createMailer() {
+  const { EMAIL_USER, EMAIL_PASS } = process.env;
+  if (!EMAIL_USER || !EMAIL_PASS) {
+    throw new Error("Email service is not configured");
+  }
+
+  return nodemailer.createTransport({
+    service: "gmail",
+    auth: { user: EMAIL_USER, pass: EMAIL_PASS },
+  });
+}
 
 
 router.post("/", async (req, res) => {
   const { name, email, subject, message } = req.body;
 
+  if (![name, email, subject, message].every((value) => typeof value === "string" && value.trim())) {
+    return res.status(400).json({ success: false, message: "Please complete all contact fields." });
+  }
+  if (name.length > 150 || email.length > 254 || subject.length > 200 || message.length > 10000) {
+    return res.status(400).json({ success: false, message: "One or more fields are too long." });
+  }
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    return res.status(400).json({ success: false, message: "Please provide a valid email address." });
+  }
+
+  const safeName = escapeHtml(name.trim());
+  const safeEmail = escapeHtml(email.trim());
+  const safeSubject = escapeHtml(subject.trim());
+  const safeMessage = escapeHtml(message.trim()).replace(/\r?\n/g, "<br>");
+
   try {
+    const mailer = createMailer();
     const adminTemplate =  `
         <!DOCTYPE html>
         <html>
@@ -120,23 +156,23 @@ router.post("/", async (req, res) => {
 
             <div class="field">
               <span class="label">Name</span>
-              <div class="value">${name}</div>
+              <div class="value">${safeName}</div>
             </div>
 
             <div class="field">
               <span class="label">Email</span>
-              <div class="value">${email}</div>
+              <div class="value">${safeEmail}</div>
             </div>
 
             <div class="field">
               <span class="label">Subject</span>
-              <div class="value">${subject}</div>
+              <div class="value">${safeSubject}</div>
             </div>
 
             <div class="field">
               <span class="label">Message</span>
               <div class="message-box">
-                ${message}
+                ${safeMessage}
               </div>
             </div>
 
@@ -252,7 +288,7 @@ router.post("/", async (req, res) => {
                 <p>Integrity Driven Recovery Solutions</p> 
               </div> 
               <div class="content"> 
-                <h2>Hello ${name},</h2>
+                <h2>Hello ${safeName},</h2>
                 <p> Thank you for contacting <strong>Vardaan Enterprises</strong>. We appreciate your interest in our services. </p> 
                 
                 <div class="highlight-box"> Your message has been received successfully and our team will review it shortly. </div> 
@@ -266,36 +302,33 @@ router.post("/", async (req, res) => {
         </body> 
       </html> `;
 
-    const adminResult = await resend.emails.send({
-      from: "onboarding@resend.dev",
-      to: "theswift321@gmail.com",
-      replyTo: email,
-      subject,
+    const sender = process.env.EMAIL_USER;
+    const recipient = process.env.CONTACT_TO_EMAIL || sender;
+    await mailer.sendMail({
+      from: `Vardaan Enterprises <${sender}>`,
+      to: recipient,
+      replyTo: email.trim(),
+      subject: `Website contact: ${subject.trim()}`,
       html: adminTemplate,
     });
-    
-    console.log("asd");
-    console.log("Admin email:", adminResult);
 
-    const customerResult = await resend.emails.send({
-      from: "theswift321@gmail.com",
-      to: email,
+    await mailer.sendMail({
+      from: `Vardaan Enterprises <${sender}>`,
+      to: email.trim(),
       subject: "Thank You For Contacting Vardaan Enterprises",
       html: customerTemplate,
     });
-
-    console.log("Customer email:", customerResult);
 
     return res.status(200).json({
       success: true,
       message: "Message Sent Successfully",
     });
   } catch (error) {
-    console.error("FULL ERROR:", error);
+    console.error("Contact email delivery failed:", error.message);
 
     return res.status(500).json({
       success: false,
-      message: error.message,
+      message: "Unable to send your message right now. Please try again later.",
     });
   }
 });
